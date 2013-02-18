@@ -9,7 +9,7 @@ namespace :deploy do
   desc 'Setup'
   task :setup, :except => {:no_release => true} do
     run "mkdir -p `dirname #{deploy_to}` && git clone --no-checkout #{repository} #{deploy_to}"
-    run "cd #{deploy_to}; git checkout --track -b #{branch} origin/#{branch}"
+    run "cd #{deploy_to}; git fetch; git checkout --track -b #{branch} origin/#{branch}"
     update
   end
 
